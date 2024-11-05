@@ -22,6 +22,27 @@ void print(struct Node * head){
     printf("\n");
 }
 
+int search(struct Node * head, int value){
+    int index = 0;
+    while (head != NULL){
+         if (head-> val == value){
+            return index;
+         }
+         index++;
+    }
+    return -1;
+}
+
+struct Node * reverse(struct Node * head){
+    if (head == NULL || head->next == NULL){
+        return head;
+    }
+    struct Node * prev = reverse(head-> next);
+    head -> next -> next = head;
+    head -> next = NULL;
+    return prev;
+}
+
 void delete(struct Node ** head, int val){
     if (*head == NULL){
         printf("this linked list is empty. \n");
@@ -66,6 +87,9 @@ int main(){
 
     print(head);
 
+    head = reverse(head);
+
+    print(head);
     return 0;
 
 }
