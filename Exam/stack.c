@@ -32,7 +32,7 @@ void clear(struct Node * head){
 
 void pop(struct Node ** head){
     if (*head == NULL){
-        printf("this linked list is empty. \n");
+        printf("The stack is empty. \n");
         return;
     }
 
@@ -40,24 +40,16 @@ void pop(struct Node ** head){
 
     current = *head;  
     *head = (*head)->next;
+    printf("Popped %d\n", current->val);
     free(current);
 }
 
 
 int main(){
     struct Node * head = NULL;
-
     insert(&head, 20);
-    insert(&head, 40);
-    print(head);
     pop(&head);
-    print(head);
-    insert(&head, 30);   
-    print(head);
-    insert(&head, 30);
-    print(head);
     pop(&head);
-    print(head);
     clear(head);
     return 0;
 }
