@@ -62,13 +62,13 @@ void reverse(struct Node **head){
 }
 
 double add(double a, double b){
-    if(a > DBL_MAX - abs(b)){
+    if(((a>0 && b>0) || (a<0 && b<0)) && abs(a) > DBL_MAX - abs(b)){
         print("overflow");
         return -1;
     }
     return a+b;
     }
-double sub(double a, double b){return a-b;}
+double sub(double a, double b){return add(a, -1 * b);}
 double mul(double a, double b){return a*b;}
 double divi(double a, double b){return a/b;}
 int main(){
